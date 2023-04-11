@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import PokemonCard from "./components/PokemonCard"
-import NavBar from "./NavBar"
+import NavBar from "./components/NavBar"
 import { useEffect } from "react";
 
 
