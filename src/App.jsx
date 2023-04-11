@@ -1,57 +1,78 @@
 
-import PokemonCard from './components/PokemonCard';
-
 import { useState } from "react";
+import PokemonCard from "./components/PokemonCard"
+import NavBar from "./NavBar"
+import { useEffect } from "react";
 
-import NavBar from './components/NavBar';
+
+
+const pokemonList = [
+  {
+    name: "bulbasaur",
+    imgSrc:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+  },
+  {
+    name: "charmander",
+    imgSrc:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+  },
+  {
+    name: "squirtle",
+    imgSrc:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
+  },
+  {
+    name: "pikachu",
+    imgSrc:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+  },
+  {
+    name: "mew",
+  },
+];
 
 function App() {
 
-  const pokemonList = [
-    {
-      name: "bulbasaur",
-      imgSrc:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+  useEffect(
+    () => {
+      alert("Hello pokemon trainer ! :)")
     },
-    {
-      name: "charmander",
-      imgSrc:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
-    },
-    {
-      name: "squirtle",
-      imgSrc:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
-    },
-    {
-      name: "pikachu",
-      imgSrc:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
-    },
-    {
-      name: "mew",
-    },
-  ];
-
+    []
+  );
 
 
   const [pokemonIndex, setPokemonIndex] = useState(0);
+
+
   const handleClickNext = () => {
-    pokemonIndex < pokemonList.length - 1 ? setPokemonIndex(pokemonIndex + 1) : setPokemonIndex(0);
+    const nextIndex = pokemonIndex < pokemonList.length - 1 ? pokemonIndex + 1 : 0;
+    if (nextIndex === 3) {
+      alert("pika pikachu !!!");
+    }
+    setPokemonIndex(nextIndex);
   };
+
   const handleClickPrev = () => {
-    pokemonIndex > 0 ? setPokemonIndex(pokemonIndex - 1) : setPokemonIndex(pokemonList.length - 1);
+
+    const prevIndex = pokemonIndex > 0 ? pokemonIndex - 1 : pokemonList.length - 1;
+    setPokemonIndex(prevIndex);
   };
 
   return (
-    <div className="App">
 
-      <div>
-        <PokemonCard pokemon={pokemonList[pokemonIndex]} />
-      </div>
-      <NavBar next={handleClickNext} prev={handleClickPrev} />
+    <div>
+      <PokemonCard props={pokemonList[pokemonIndex]} />
+
+      <NavBar prev={handleClickPrev} next={handleClickNext} />
+
     </div>
-  );
+  )
 }
 
-export default App;
+
+
+
+
+export default App
+

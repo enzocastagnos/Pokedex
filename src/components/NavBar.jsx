@@ -1,16 +1,17 @@
-const container = {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-around",
-};
-
 function NavBar({ next, prev }) {
+
     return (
-        <div style={container}>
+        <div>
             <button onClick={prev}>Précédent</button>
             <button onClick={next}>Suivant</button>
+
+
         </div>
+
     );
+
+
+
 }
-export default NavBar;
+
+export default NavBar
